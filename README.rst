@@ -6,15 +6,15 @@ onionrouter
 .. image:: https://img.shields.io/pypi/v/onionrouter.svg
         :target: https://pypi.python.org/pypi/onionrouter
 
-.. image:: https://img.shields.io/travis/ioparaskev/onionrouter.svg
-        :target: https://travis-ci.org/ioparaskev/onionrouter
+.. image:: https://img.shields.io/travis/ehloonion/onionrouter.svg
+        :target: https://travis-ci.org/ehloonion/onionrouter
 
 .. image:: https://readthedocs.org/projects/onionrouter/badge/?version=latest
         :target: https://onionrouter.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
-.. image:: https://pyup.io/repos/github/ioparaskev/onionrouter/shield.svg
-     :target: https://pyup.io/repos/github/ioparaskev/onionrouter/
+.. image:: https://pyup.io/repos/github/ehloonion/onionrouter/shield.svg
+     :target: https://pyup.io/repos/github/ehloonion/onionrouter/
      :alt: Updates
 
 

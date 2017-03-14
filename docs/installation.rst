@@ -14,7 +14,7 @@ To install onionrouter, run this command in your terminal:
 
     $ pip install onionrouter
 
-This is the preferred method to install onionrouter, as it will always install the most recent stable release. 
+This is the preferred method to install onionrouter, as it will always install the most recent stable release.
 
 If you don't have `pip`_ installed, this `Python installation guide`_ can guide
 you through the process.
@@ -32,13 +32,13 @@ You can either clone the public repository:
 
 .. code-block:: console
 
-    $ git clone git://github.com/ioparaskev/onionrouter
+    $ git clone git://github.com/ehloonion/onionrouter
 
 Or download the `tarball`_:
 
 .. code-block:: console
 
-    $ curl  -OL https://github.com/ioparaskev/onionrouter/tarball/master
+    $ curl  -OL https://github.com/ehloonion/onionrouter/tarball/master
 
 Once you have a copy of the source, you can install it with:
 
@@ -47,5 +47,5 @@ Once you have a copy of the source, you can install it with:
     $ python setup.py install
 
 
-.. _Github repo: https://github.com/ioparaskev/onionrouter
-.. _tarball: https://github.com/ioparaskev/onionrouter/tarball/master
+.. _Github repo: https://github.com/ehloonion/onionrouter
+.. _tarball: https://github.com/ehloonion/onionrouter/tarball/master

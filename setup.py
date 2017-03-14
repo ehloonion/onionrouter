@@ -25,7 +25,7 @@ setup(
     long_description=readme + '\n\n' + history,
     author="Ehlo Onion",
     author_email='onionmx@lists.immerda.ch',
-    url='https://github.com/ioparaskev/onionrouter',
+    url='https://github.com/ehloonion/onionrouter',
     packages=[
         'onionrouter',
     ],
