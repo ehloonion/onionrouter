@@ -9,7 +9,7 @@ def cross_input(text):
     and python 2.x
     """
     if sys.version_info[0] < 3:
-        return raw_input(text)
+        return raw_input(text)  # noqa
     return input(text)
 
 
