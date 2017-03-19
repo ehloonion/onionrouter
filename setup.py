@@ -31,7 +31,7 @@ test_requirements = [
 setup(
     name='onionrouter',
     version='0.1.0',
-    description="Python Routed Onion Deliveries",
+    description="Python Onion Routed Mail Deliveries",
     long_description=readme + '\n\n' + history,
     author="Ehlo Onion",
     author_email='onionmx@lists.immerda.ch',
@@ -39,8 +39,9 @@ setup(
     packages=[
         'onionrouter',
     ],
-    package_dir={'onionrouter':
-                 'onionrouter'},
+    entry_points={
+        "console_scripts": ['onionrouter = onionrouter.onionrouter:main']
+    },
     include_package_data=True,
     install_requires=requirements,
     license="GNU General Public License v3",
