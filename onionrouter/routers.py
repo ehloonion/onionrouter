@@ -1,6 +1,6 @@
 from abc import abstractmethod, ABCMeta
 from dns import exception as dnsexception
-from config_handlers import load_yamls
+from .config_handlers import load_yamls
 
 
 class PostfixRerouter(object):

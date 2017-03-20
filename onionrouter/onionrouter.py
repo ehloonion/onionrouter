@@ -1,17 +1,14 @@
 #!/usr/bin/env python
 from __future__ import print_function
-import sys
-from collections import namedtuple
 import argparse
-import routers
-from lookups import OnionServiceLookup
-import config_handlers
-import olib
+from collections import namedtuple
 from functools import partial
-from socket import error as socket_error
-import msockets as msockets
-import custom_exceptions as exc
 from pkg_resources import resource_filename
+import sys
+from socket import error as socket_error
+from .lookups import OnionServiceLookup
+from . import (config_handlers, custom_exceptions as exc,
+               msockets, olib, routers)
 
 
 default_config_path = "/etc/onionrouter/"
