@@ -1,50 +1,41 @@
 .. highlight:: shell
 
-============
-Installation
-============
+There are two ways to install onionrouter, automatically using pip or cloning the repository and manually installing the needed packages on Debian. Currently onionrouter has only been tested on Debian Jessie.
 
+Using pip
+^^^^^^^^^
+.. code-block:: console
 
-Stable release
---------------
+   $ sudo pip install onionrouter
 
-To install onionrouter, run this command in your terminal:
+Test functionality
+""""""""""""""""""
+.. code-block:: console
+
+   $ onionrouter --help
+
+Manual installation on Debian Jessie
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Clone repository
+"""""""""""""""""""""""
+.. code-block:: console
+
+   $ git clone https://github.com/ehloonion/onionrouter.git
+
+Install Debian packages
+"""""""""""""""""""""""
+onionrouter has only been tested on Debian Jessie. Install the following packages:
 
 .. code-block:: console
 
-    $ pip install onionrouter
+   $ sudo apt install python-dnspython python-yaml
 
-This is the preferred method to install onionrouter, as it will always install the most recent stable release.
-
-If you don't have `pip`_ installed, this `Python installation guide`_ can guide
-you through the process.
-
-.. _pip: https://pip.pypa.io
-.. _Python installation guide: http://docs.python-guide.org/en/latest/starting/installation/
-
-
-From sources
-------------
-
-The sources for onionrouter can be downloaded from the `Github repo`_.
-
-You can either clone the public repository:
-
+Test functionality
+""""""""""""""""""
 .. code-block:: console
 
-    $ git clone git://github.com/ehloonion/onionrouter
-
-Or download the `tarball`_:
-
-.. code-block:: console
-
-    $ curl  -OL https://github.com/ehloonion/onionrouter/tarball/master
-
-Once you have a copy of the source, you can install it with:
-
-.. code-block:: console
-
-    $ python setup.py install
+   $ python onionrouter_run.py --help
 
 
 .. _Github repo: https://github.com/ehloonion/onionrouter
