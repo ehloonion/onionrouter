@@ -35,6 +35,8 @@ Test functionality
 """"""""""""""""""
 .. code-block:: console
 
+   $ cd onionrouter
+   $ chmod +x onionrouter_run.py
    $ python onionrouter_run.py --help
 
 

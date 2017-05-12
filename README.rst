@@ -75,14 +75,16 @@ Test functionality
 """"""""""""""""""
 .. code-block:: console
 
+   $ cd onionrouter
+   $ chmod +x onionrouter_run.py
    $ python onionrouter_run.py --help
 
 Configuration and other options
 -------------------------------
 * Copy or update the onionrouter.ini file and with your settings (reference file is in onionrouter/configs folder if you cloned the git repo or in /etc/onionrouter/ if you installed the package)
-* Edit the config
+* Edit the configuration file
     * Under the DOMAIN section replace the value of the **hostname** key with your local domain to be whitelisted from lookups.
-    * Under the RESOLVER section put in the **resolver_ip** field your preferred resolver (default is 127.0.0.1). To use multiple resolvers, seperate them with comma ','
+    * Under the RESOLVER section put in the **resolver_ip** field your preferred resolver (default is 127.0.0.1). To use multiple resolvers, separate them with comma ','
     * Under the RESOLVER section put in the **resolver_port** field the port that your resolver listens to (default is 53)
 
 onionrouter by default queries the destination domain for a specific SRV record, *_onion-mx._tcp.* and if it finds a .onion address in the reply it gives it back to postfix to be used by the smtptor service defined in master.cf. If no valid SRV record is found the mail is passed to smtp service. This gives us dynamic SRV lookups that lead to SMTP over onion addresses!
@@ -103,13 +105,13 @@ Other options are supported as well:
 
 * **--mappings MAPPINGS** to define absolute path to static mappings folder (everything inside will be parsed as a yaml file) or yaml file
 * **--config CONFIG** to define the absolute path to config folder (must contain a onionrouter.ini file inside) or config file
-* **--client** or **-c** to connect to the daemon and ineract with. Use the host and port options to define the options for the connection to the daemon
+* **--client** or **-c** to connect to the daemon and interact with. Use the host and port options to define the options for the connection to the daemon
 * **--debug** or **-d** to start the daemon in debug mode. In this mode, daemon will also print (besides replying) the queries and answers Use the host and port options to define the options for the daemon
 * **--interactive** or **-i** to run onionrouter in interactive input mode for debugging or testing purposes without daemon
 
 How to run
 ----------
-Currently onionrouter runs in the foreground, so you need to either run it via a systemd unit file or through some other daemonizing methond (eg screen/tmux/etc). An example systemd unit is included in the *contrib* directory, modify it to your liking.
+Currently onionrouter runs in the foreground, so you need to either run it via a systemd unit file or through some other daemonizing method (eg screen/tmux/etc). An example systemd unit is included in the *contrib* directory, modify it to your liking.
 
 .. code-block:: console
 
