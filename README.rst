@@ -76,8 +76,7 @@ Test functionality
 .. code-block:: console
 
    $ cd onionrouter
-   $ chmod +x onionrouter_run.py
-   $ python onionrouter_run.py --help
+   $ ./onionrouter_run --help
 
 Configuration and other options
 -------------------------------
@@ -115,4 +114,4 @@ Currently onionrouter runs in the foreground, so you need to either run it via a
 
 .. code-block:: console
 
-   $ python onionrouter_run.py --config /srv/onionrouter/onionrouter/configs/onionrouter.ini --mappings /srv/onionrouter/onionrouter/configs/map.yml -p 23002 --debug
+   $ ./onionrouter_run --config /srv/onionrouter/onionrouter/configs/onionrouter.ini --mappings /srv/onionrouter/onionrouter/configs/map.yml -p 23002 --debug

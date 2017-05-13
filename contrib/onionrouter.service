@@ -3,7 +3,7 @@ Description=onionrouter
 After=network.target
 
 [Service]
-ExecStart=/srv/onionrouter/onionrouter_run.py --config /srv/onionrouter/onionrouter/configs/onionrouter.ini --mappings /srv/onionrouter/onionrouter/configs/map.yml -p 23002
+ExecStart=/srv/onionrouter/onionrouter_run --config /srv/onionrouter/onionrouter/configs/onionrouter.ini --mappings /srv/onionrouter/onionrouter/configs/map.yml -p 23002
 PIDFile=/var/run/onionrouter.pid
 Restart=on-failure
 RestartSec=10s
