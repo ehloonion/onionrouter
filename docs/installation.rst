@@ -35,7 +35,8 @@ Test functionality
 """"""""""""""""""
 .. code-block:: console
 
-   $ python onionrouter_run.py --help
+   $ cd onionrouter
+   $ ./onionrouter_run --help
 
 
 .. _Github repo: https://github.com/ehloonion/onionrouter
