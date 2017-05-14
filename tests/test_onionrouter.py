@@ -11,8 +11,12 @@ Tests for `onionrouter` module.
 import pytest
 
 
-from onionrouter import onionrouter
+class TestOnionRouter(object):
+    def test_multiple_hostnames_support(self, dummy_onionrouter):
+        assert len(dummy_onionrouter.myname) > 1
 
+    def test_hostname_is_upper(self, dummy_onionrouter):
+        assert all(x.isupper() for x in dummy_onionrouter.myname) is True
 
 @pytest.fixture
 def response():
@@ -23,8 +27,3 @@ def response():
     # return requests.get('https://github.com/audreyr/cookiecutter-pypackage')
 
 
-def test_content(response):
-    """Sample pytest test function with the pytest fixture as an argument.
-    """
-    # from bs4 import BeautifulSoup
-    # assert 'GitHub' in BeautifulSoup(response.content).title.string
