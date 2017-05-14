@@ -5,7 +5,7 @@ try:
     import configparser
 except ImportError:
     import ConfigParser as configparser
-from onionrouter import onionrouter, config_handlers
+from onionrouter import rerouter, config_handlers
 
 
 config = """
@@ -37,10 +37,10 @@ def fixture_config():
 def fixture_onionrouter(monkeypatch, dummy_config):
     monkeypatch.setattr(
         config_handlers, "get_conffile",
-        lambda *args, **kwargs: onionrouter.OnionRouter.ref_config)
+        lambda *args, **kwargs: rerouter.OnionRouter.ref_config)
     custom_config = configparser.ConfigParser()
     custom_config._read(io.StringIO(dummy_config), None)
     monkeypatch.setattr(config_handlers, "config_reader",
                         lambda *args: custom_config)
-    return onionrouter.OnionRouter("nothing?")
+    return rerouter.OnionRouter("nothing?")
 

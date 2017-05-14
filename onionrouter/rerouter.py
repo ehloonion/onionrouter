@@ -6,9 +6,9 @@ from functools import partial
 from pkg_resources import resource_filename
 import sys
 from socket import error as socket_error
-from .lookups import OnionServiceLookup
-from . import (config_handlers, custom_exceptions as exc,
-               msockets, olib, routers)
+from onionrouter.lookups import OnionServiceLookup
+from onionrouter import (config_handlers, custom_exceptions as exc,
+                         msockets, olib, routers)
 
 
 default_config_path = "/etc/onionrouter/"
