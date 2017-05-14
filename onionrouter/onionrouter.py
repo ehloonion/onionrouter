@@ -40,7 +40,10 @@ class OnionRouter(object):
 
     @staticmethod
     def get_domain(name):
-        return name.split("@")[1]
+        split_name = name.split("@")
+        if name.count("@") != 1 or split_name[1] == "":
+            raise RuntimeError
+        return split_name[1]
 
     def reroute(self, domain):
         if domain.upper() in self.myname:
@@ -52,7 +55,7 @@ class OnionRouter(object):
     def run(self, address):
         try:
             domain = self.get_domain(address)
-        except IndexError:
+        except RuntimeError:
             return "500 Request key is not an email address"
         routing = self.reroute(domain)
         # in the end, there can be only one response

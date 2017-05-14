@@ -18,12 +18,16 @@ class TestOnionRouter(object):
     def test_hostname_is_upper(self, dummy_onionrouter):
         assert all(x.isupper() for x in dummy_onionrouter.myname) is True
 
-@pytest.fixture
-def response():
-    """Sample pytest fixture.
-    See more at: http://doc.pytest.org/en/latest/fixture.html
-    """
-    # import requests
-    # return requests.get('https://github.com/audreyr/cookiecutter-pypackage')
+    def test_get_domain_multiple_at(self, dummy_onionrouter):
+        with pytest.raises(RuntimeError):
+            dummy_onionrouter.get_domain("lalla@lalala.com@lalal.net")
 
+    def test_get_domain_no_email(self, dummy_onionrouter):
+        with pytest.raises(RuntimeError):
+            dummy_onionrouter.get_domain("lalla")
 
+    def test_get_domain_correct_email(self, dummy_onionrouter):
+        assert dummy_onionrouter.get_domain("lol@test.com") == "test.com"
+
+    def test_reroute_local_domain(self, dummy_onionrouter):
+        assert dummy_onionrouter.reroute("myself.net") == tuple(["200 :"])
