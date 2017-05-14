@@ -9,6 +9,7 @@ Tests for `onionrouter` module.
 """
 
 import pytest
+from onionrouter.routers import OnionPostfixRerouter
 
 
 class TestOnionRouter(object):
@@ -31,3 +32,10 @@ class TestOnionRouter(object):
 
     def test_reroute_local_domain(self, dummy_onionrouter):
         assert dummy_onionrouter.reroute("myself.net") == tuple(["200 :"])
+
+    def test_reroute_no_lazy_config(self, dummy_onionrouter,
+                                    monkeypatch):
+        dummy_answer = tuple(["test"])
+        monkeypatch.setattr(OnionPostfixRerouter, "reroute",
+                            lambda *args: dummy_answer)
+        assert dummy_onionrouter.reroute("testme") == dummy_answer

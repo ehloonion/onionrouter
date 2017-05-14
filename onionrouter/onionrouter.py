@@ -21,7 +21,7 @@ class OnionRouter(object):
                                        "configs/onionrouter.ini"))
     rerouters = namedtuple('rerouters', ('lazy', 'onion'))
 
-    def __init__(self, config_path, map_path=None):
+    def __init__(self, config_path, map_path=""):
         self.config_file = config_handlers.get_conffile(config_path,
                                                         prefix="onionrouter")
         self.mappings_path = map_path
