@@ -35,14 +35,15 @@ class OnionRouter(object):
 
     @property
     def myname(self):
-        return self.config.get("DOMAIN", "hostname")
+        return [x.strip().upper() for x in self.config.get(
+            "DOMAIN", "hostname").split(",")]
 
     @staticmethod
     def get_domain(name):
         return name.split("@")[1]
 
     def reroute(self, domain):
-        if self.myname == domain:
+        if domain.upper() in self.myname:
             return tuple(["200 :"])
         else:
             return (self.rerouters.lazy.reroute(domain)

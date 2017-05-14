@@ -82,7 +82,7 @@ Configuration and other options
 -------------------------------
 * Copy or update the onionrouter.ini file and with your settings (reference file is in onionrouter/configs folder if you cloned the git repo or in /etc/onionrouter/ if you installed the package)
 * Edit the configuration file
-    * Under the DOMAIN section replace the value of the **hostname** key with your local domain to be whitelisted from lookups.
+    * Under the DOMAIN section replace the value of the **hostname** key with your local domain to be whitelisted from lookups. To add multiple local domains, separate them with comma ','
     * Under the RESOLVER section put in the **resolver_ip** field your preferred resolver (default is 127.0.0.1). To use multiple resolvers, separate them with comma ','
     * Under the RESOLVER section put in the **resolver_port** field the port that your resolver listens to (default is 53)
 
