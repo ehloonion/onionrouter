@@ -38,16 +38,23 @@ class OnionRouter(object):
         return [x.strip().upper() for x in self.config.get(
             "DOMAIN", "hostname").split(",")]
 
+    @property
+    def ignored_domains(self):
+        return [x.strip().upper() for x in self.config.get(
+            "IGNORED", "domains").split(",")]
+
     @staticmethod
-    def get_domain(name):
-        split_name = name.split("@")
-        if name.count("@") != 1 or split_name[1] == "":
+    def get_domain(address):
+        split_addr = address.split("@")
+        if address.count("@") != 1 or split_addr[1] == "":
             raise RuntimeError
-        return split_name[1]
+        return split_addr[1]
 
     def reroute(self, domain):
         if domain.upper() in self.myname:
             return tuple(["200 :"])
+        elif domain.upper() in self.ignored_domains:
+            return tuple(["500 Domain is in ignore list"])
         else:
             return (self.rerouters.lazy.reroute(domain)
                     or self.rerouters.onion.reroute(domain))

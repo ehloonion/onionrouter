@@ -17,7 +17,7 @@ class TestOnionRouter(object):
         assert len(dummy_onionrouter.myname) > 1
 
     def test_hostname_is_upper(self, dummy_onionrouter):
-        assert all(x.isupper() for x in dummy_onionrouter.myname) is True
+        assert all(map(lambda x: x.isupper(), dummy_onionrouter.myname))
 
     def test_get_domain_multiple_at(self, dummy_onionrouter):
         with pytest.raises(RuntimeError):
@@ -50,3 +50,17 @@ class TestOnionRouter(object):
         monkeypatch.setattr(OnionPostfixRerouter, "reroute",
                             lambda *args: dummy_answer)
         assert dummy_onionrouter.run("t@t.c") == dummy_answer[0]
+
+    def test_ignored_domains_exist(self, dummy_onionrouter):
+        assert dummy_onionrouter.ignored_domains
+
+    def test_ignored_domains_case_insensitive(self, dummy_onionrouter):
+        assert all(map(lambda x: x.isupper(),
+                       dummy_onionrouter.ignored_domains))
+
+    def test_ignored_domain_rerouting(self, dummy_onionrouter):
+        assert (dummy_onionrouter.run("please@iGnORe.Me")
+                == "500 Domain is in ignore list")
+
+    def test_check_local_domain_before_ignored(self, dummy_onionrouter):
+        assert dummy_onionrouter.run("m@myself.net") == "200 :"

@@ -22,6 +22,9 @@ srv_record: _onion-mx._tcp.
 
 [REROUTE]
 onion_transport: smtptor
+
+[IGNORED]
+domains: ignore.me, ignore2.me
 """
 
 
