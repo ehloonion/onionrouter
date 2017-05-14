@@ -39,3 +39,14 @@ class TestOnionRouter(object):
         monkeypatch.setattr(OnionPostfixRerouter, "reroute",
                             lambda *args: dummy_answer)
         assert dummy_onionrouter.reroute("testme") == dummy_answer
+
+    def test_reroute_run_wrong_domain(self, dummy_onionrouter):
+        assert (dummy_onionrouter.run("llalalla")
+                == "500 Request key is not an email address")
+
+    def test_reroute_multiple_findings(self, dummy_onionrouter,
+                                       monkeypatch):
+        dummy_answer = tuple(["test1", "test2", "test3"])
+        monkeypatch.setattr(OnionPostfixRerouter, "reroute",
+                            lambda *args: dummy_answer)
+        assert dummy_onionrouter.run("t@t.c") == dummy_answer[0]
