@@ -6,9 +6,9 @@ from functools import partial
 from pkg_resources import resource_filename
 import sys
 from socket import error as socket_error
-from .lookups import OnionServiceLookup
-from . import (config_handlers, custom_exceptions as exc,
-               msockets, olib, routers)
+from onionrouter.lookups import OnionServiceLookup
+from onionrouter import (config_handlers, custom_exceptions as exc,
+                         msockets, olib, routers)
 
 
 default_config_path = "/etc/onionrouter/"
@@ -21,7 +21,7 @@ class OnionRouter(object):
                                        "configs/onionrouter.ini"))
     rerouters = namedtuple('rerouters', ('lazy', 'onion'))
 
-    def __init__(self, config_path, map_path=None):
+    def __init__(self, config_path, map_path=""):
         self.config_file = config_handlers.get_conffile(config_path,
                                                         prefix="onionrouter")
         self.mappings_path = map_path
@@ -38,13 +38,23 @@ class OnionRouter(object):
         return [x.strip().upper() for x in self.config.get(
             "DOMAIN", "hostname").split(",")]
 
+    @property
+    def ignored_domains(self):
+        return [x.strip().upper() for x in self.config.get(
+            "IGNORED", "domains").split(",")]
+
     @staticmethod
-    def get_domain(name):
-        return name.split("@")[1]
+    def get_domain(address):
+        split_addr = address.split("@")
+        if address.count("@") != 1 or split_addr[1] == "":
+            raise RuntimeError
+        return split_addr[1]
 
     def reroute(self, domain):
         if domain.upper() in self.myname:
             return tuple(["200 :"])
+        elif domain.upper() in self.ignored_domains:
+            return tuple(["500 Domain is in ignore list"])
         else:
             return (self.rerouters.lazy.reroute(domain)
                     or self.rerouters.onion.reroute(domain))
@@ -52,7 +62,7 @@ class OnionRouter(object):
     def run(self, address):
         try:
             domain = self.get_domain(address)
-        except IndexError:
+        except RuntimeError:
             return "500 Request key is not an email address"
         routing = self.reroute(domain)
         # in the end, there can be only one response

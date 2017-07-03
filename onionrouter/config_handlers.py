@@ -4,8 +4,9 @@ try:
 except ImportError:
     import configparser
 from yaml import load
-from .olib import find_file, find_files_with_suffix
-from .custom_exceptions import ConfigIntegrityError, ConfigNotFoundError
+from onionrouter.olib import find_file, find_files_with_suffix
+from onionrouter.custom_exceptions import (ConfigIntegrityError,
+                                           ConfigNotFoundError)
 
 
 class ConfigIntegrityChecker(object):

@@ -2,7 +2,7 @@ from __future__ import print_function
 import socket
 import multiprocessing
 import atexit
-from . import olib
+from onionrouter import olib
 
 
 def close_socket(sock):

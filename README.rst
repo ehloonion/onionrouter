@@ -82,14 +82,15 @@ Configuration and other options
 -------------------------------
 * Copy or update the onionrouter.ini file and with your settings (reference file is in onionrouter/configs folder if you cloned the git repo or in /etc/onionrouter/ if you installed the package)
 * Edit the configuration file
-    * Under the DOMAIN section replace the value of the **hostname** key with your local domain to be whitelisted from lookups. To add multiple local domains, separate them with comma ','
-    * Under the RESOLVER section put in the **resolver_ip** field your preferred resolver (default is 127.0.0.1). To use multiple resolvers, separate them with comma ','
-    * Under the RESOLVER section put in the **resolver_port** field the port that your resolver listens to (default is 53)
+    * Under the **DOMAIN** section replace the value of the **hostname** key with your local domain to be whitelisted from lookups. To add multiple local domains, separate them with comma ','
+    * Under the **RESOLVER** section put in the **resolver_ip** field your preferred resolver (default is 127.0.0.1). To use multiple resolvers, separate them with comma ','
+    * Under the **RESOLVER** section put in the **resolver_port** field the port that your resolver listens to (default is 53)
 
 onionrouter by default queries the destination domain for a specific SRV record, *_onion-mx._tcp.* and if it finds a .onion address in the reply it gives it back to postfix to be used by the smtptor service defined in master.cf. If no valid SRV record is found the mail is passed to smtp service. This gives us dynamic SRV lookups that lead to SMTP over onion addresses!
 
-* To change the SRV record the scripts looks for, edit the config file mentioned above and change under the DNS section the srv_record field with the SRV record you have setup (default is _onion-mx._tcp.)
-* To change the service that will be used when a .onion address is found, edit the config file mentioned above and change under the REROUTE section the onion_transport field with the service you want to be used (default is smtptor)
+* To change the SRV record the scripts looks for, edit the config file mentioned above and change under the **DNS** section the **srv_record** field with the SRV record you have setup (default is _onion-mx._tcp.)
+* To change the service that will be used when a .onion address is found, edit the config file mentioned above and change under the **REROUTE** section the **onion_transport** field with the service you want to be used (default is smtptor)
+* To *blacklist/ignore* domains in case you have a custom routing rule, or a black list of domains, add those domains under the **IGNORED** section in the **domains** field. For multiple domains, separate them with comma ','.
 
 Execution options
 -----------------
