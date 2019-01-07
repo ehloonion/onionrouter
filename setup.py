@@ -11,7 +11,7 @@ with open('HISTORY.rst') as history_file:
 
 requirements = [
     "dnspython",
-    "PyYAML"
+    "PyYAML==4.2b1",
 ]
 
 test_requirements = [
@@ -24,13 +24,13 @@ test_requirements = [
     "coverage==4.1",
     "Sphinx==1.4.8",
     "cryptography==1.7",
-    "PyYAML==3.11",
+    "PyYAML==4.2b1",
     "pytest==2.9.2"
 ]
 
 setup(
     name='onionrouter',
-    version='0.5.1',
+    version='0.5.2',
     description="Python Onion Routed Mail Deliveries",
     long_description=readme + '\n\n' + history,
     author="Ehlo Onion",
