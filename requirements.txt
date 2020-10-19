@@ -1,2 +1,2 @@
-dnspython==1.15.0
-PyYAML==4.2b1
+dnspython==2.0.0
+PyYAML==5.3.1
