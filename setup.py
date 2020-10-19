@@ -40,7 +40,7 @@ setup(
         'onionrouter',
     ],
     entry_points={
-        "console_scripts": ['onionrouter = onionrouter.onionrouter:main']
+        "console_scripts": ['onionrouter = onionrouter.rerouter:main']
     },
     include_package_data=True,
     install_requires=requirements,
