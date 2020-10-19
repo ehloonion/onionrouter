@@ -6,6 +6,8 @@ include HISTORY.rst
 include LICENSE
 include README.rst
 
+include conftest.py
+
 recursive-include onionrouter *.ini
 recursive-include tests *
 recursive-exclude * __pycache__
