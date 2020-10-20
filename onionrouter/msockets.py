@@ -27,7 +27,7 @@ def resolve(rerouter, conn, resolve_callback=lambda q, a: (q, a)):
         return
     except BaseException as err:
         # todo log
-        conn.sendall("500 {0}".format(err).encode())
+        conn.sendall("500 {0}\n".format(err).encode())
 
 
 def daemonize_server(rerouter, host, port, resolver=resolve):
