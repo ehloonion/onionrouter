@@ -2,4 +2,4 @@
 
 __author__ = """Ehlo Onion"""
 __email__ = 'onionmx@lists.immerda.ch'
-__version__ = '0.5.1'
+__version__ = '0.5.4'
