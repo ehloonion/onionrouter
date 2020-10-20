@@ -13,7 +13,7 @@ def close_socket(sock):
 def resolve(rerouter, conn, resolve_callback=lambda q, a: (q, a)):
     try:
         while True:
-            addr = conn.recv(1024).strip()
+            addr = conn.recv(1024).decode().strip()
             if not addr:
                 # connection ended
                 return
@@ -22,12 +22,12 @@ def resolve(rerouter, conn, resolve_callback=lambda q, a: (q, a)):
             else:
                 result = rerouter.run(addr)
                 resolve_callback(addr, result)
-                conn.sendall("{0}\n".format(result))
+                conn.sendall("{0}\n".format(result).encode())
     except socket.timeout:
         return
     except BaseException as err:
         # todo log
-        conn.sendall("500 {0}\n".format(err))
+        conn.sendall("500 {0}\n".format(err).encode())
 
 
 def daemonize_server(rerouter, host, port, resolver=resolve):
