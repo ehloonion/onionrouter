@@ -10,7 +10,7 @@ with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
 requirements = [
-    "dnspython<=2.0.0",
+    "dnspython>=2.0.0,<3.0.0",
     "PyYAML>=4.2b1,<6.0.0",
 ]
 
