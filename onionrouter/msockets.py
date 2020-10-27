@@ -18,7 +18,7 @@ def resolve(rerouter, conn, resolve_callback=lambda q, a: (q, a)):
                 # connection ended
                 return
             if addr == 'get *':
-                conn.sendall("500 Request key is not an email address\n")
+                conn.sendall("500 Request key is not an email address\n".encode())
             else:
                 result = rerouter.run(addr)
                 resolve_callback(addr, result)
@@ -53,5 +53,5 @@ def client(host, port):
         if addr == 'get *':
             print("500 Request key is not an email address")
         else:
-            sock.sendall(addr)
-            print(sock.recv(1024).strip())
+            sock.sendall(addr.encode())
+            print(sock.recv(1024).decode().strip())
