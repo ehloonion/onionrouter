@@ -18,8 +18,9 @@ def resolve(rerouter, conn, resolve_callback=lambda q, a: (q, a)):
                 # connection ended
                 return
             if addr == 'get *':
-                conn.sendall("500 Request key is not an email address\n"
-                        .encode())
+                conn.sendall(
+                    "500 Request key is not an email address\n".encode()
+                )
             else:
                 result = rerouter.run(addr)
                 resolve_callback(addr, result)
