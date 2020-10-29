@@ -2,6 +2,13 @@
 History
 =======
 
+0.6.0 (2020-10-29)
+------------------
+
+* Fix byte/string conversion errors
+* Add support for python 3.7/3.8/3.9
+* Drop support for EOL Python 2.7/3.3/3.4
+* Use newer versions of dnspython and PyYAML
 
 0.5.4 (2020-10-20)
 ------------------
