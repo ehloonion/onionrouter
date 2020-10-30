@@ -1,12 +1,24 @@
 [Unit]
 Description=onionrouter
 After=network.target
+Before=postfix.service
 
 [Service]
-ExecStart=/srv/onionrouter/onionrouter_run --config /srv/onionrouter/onionrouter/configs/onionrouter.ini --mappings /srv/onionrouter/onionrouter/configs/map.yml -p 23002
-PIDFile=/var/run/onionrouter.pid
+ExecStart=/usr/bin/onionrouter
 Restart=on-failure
 RestartSec=10s
+DynamicUser=true
+PrivateDevices=true
+PrivateUsers=true
+ProtectClock=true
+ProtectControlGroups=true
+ProtectHome=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectHostname=true
+RestrictRealtime=true
+MemoryDenyWriteExecute=true
 
 [Install]
 WantedBy=default.target
