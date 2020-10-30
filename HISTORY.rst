@@ -2,6 +2,12 @@
 History
 =======
 
+0.6.1 (2020-10-29)
+------------------
+
+* Bump cryptography requirement to 3.2 due to CVE-2020-25659
+* Fix systemd paths and add hardening options
+
 0.6.0 (2020-10-29)
 ------------------
 
