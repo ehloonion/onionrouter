@@ -23,7 +23,7 @@ test_requirements = [
     "tox==2.3.1",
     "coverage==4.1",
     "Sphinx==1.4.8",
-    "cryptography==3.2",
+    "cryptography==3.3.2",
     "PyYAML==4.2b1",
     "pytest==2.9.2"
 ]
