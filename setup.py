@@ -11,7 +11,7 @@ with open('HISTORY.rst') as history_file:
 
 requirements = [
     "dnspython>=2.0.0,<3.0.0",
-    "PyYAML>=4.2b1,<6.0.0",
+    "PyYAML>=4.2b1",
 ]
 
 test_requirements = [
@@ -24,7 +24,7 @@ test_requirements = [
     "coverage==4.1",
     "Sphinx==1.4.8",
     "cryptography==3.3.2",
-    "PyYAML==5.4",
+    "PyYAML==6.0",
     "pytest==2.9.2"
 ]
 
