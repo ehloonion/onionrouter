@@ -24,7 +24,7 @@ test_requirements = [
     "coverage==4.1",
     "Sphinx==1.4.8",
     "cryptography==3.3.2",
-    "PyYAML==5.4",
+    "PyYAML==6.0",
     "pytest==2.9.2"
 ]
 
