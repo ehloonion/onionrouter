@@ -14,3 +14,4 @@ Contributors
 
 * George Kargiotakis <kargig@void.gr>
 * John Paraskevopoulos <ioparaskev@gmail.com>
+* Craig Andrews <candrews@integralblue.com>
