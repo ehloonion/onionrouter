@@ -2,6 +2,12 @@
 History
 =======
 
+0.6.2 (2021-10-15)
+------------------
+* Bump pip version in setup.py to >=19.2 due to CVE-2019-20916
+* Lift PyYAML restriction of < 6.0 and pin to 6.0 in test requirements and requirements.txt
+* Add support for Python 3.10
+
 0.6.1 (2020-10-29)
 ------------------
 

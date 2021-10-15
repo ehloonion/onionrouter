@@ -30,7 +30,7 @@ test_requirements = [
 
 setup(
     name='onionrouter',
-    version='0.6.1',
+    version='0.6.2',
     description="Python Onion Routed Mail Deliveries",
     long_description=readme,
     author="Ehlo Onion",
