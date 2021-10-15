@@ -15,7 +15,7 @@ requirements = [
 ]
 
 test_requirements = [
-    "pip==8.1.2",
+    "pip>=19.2",
     "bumpversion==0.5.3",
     "wheel==0.29.0",
     "watchdog==0.8.3",
@@ -30,7 +30,7 @@ test_requirements = [
 
 setup(
     name='onionrouter',
-    version='0.6.1',
+    version='0.6.2',
     description="Python Onion Routed Mail Deliveries",
     long_description=readme,
     author="Ehlo Onion",
