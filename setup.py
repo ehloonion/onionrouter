@@ -15,7 +15,7 @@ requirements = [
 ]
 
 test_requirements = [
-    "pip==8.1.2",
+    "pip>=19.2",
     "bumpversion==0.5.3",
     "wheel==0.29.0",
     "watchdog==0.8.3",
