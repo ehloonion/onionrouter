@@ -3,7 +3,7 @@ try:
     import ConfigParser as configparser
 except ImportError:
     import configparser
-from yaml import load
+from yaml import safe_load
 from onionrouter.olib import find_file, find_files_with_suffix
 from onionrouter.custom_exceptions import (ConfigIntegrityError,
                                            ConfigNotFoundError)
@@ -91,5 +91,5 @@ def load_yamls(yaml_path):
     """
     yaml_mapping = dict()
     for f in yaml_loader(yaml_path):
-        yaml_mapping.update(load(f))
+        yaml_mapping.update(safe_load(f))
     return yaml_mapping
