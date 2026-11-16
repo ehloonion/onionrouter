@@ -3,7 +3,7 @@ from __future__ import print_function
 import argparse
 from collections import namedtuple
 from functools import partial
-from pkg_resources import resource_filename
+import os
 import sys
 from socket import error as socket_error
 from onionrouter.lookups import OnionServiceLookup
@@ -14,12 +14,15 @@ from onionrouter import (config_handlers, custom_exceptions as exc,
 default_config_path = "/etc/onionrouter/"
 default_mappings_path = "/etc/onionrouter/mappings"
 
+# Defined at module level so instances can be pickled (required by the
+# "spawn" and "forkserver" multiprocessing start methods).
+Rerouters = namedtuple('Rerouters', ('lazy', 'onion'))
+
 
 class OnionRouter(object):
     ref_config = (olib.find_file("/etc/onionrouter/", "onionrouter.ini")
-                  or resource_filename("onionrouter",
-                                       "configs/onionrouter.ini"))
-    rerouters = namedtuple('rerouters', ('lazy', 'onion'))
+                  or os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                  "configs", "onionrouter.ini"))
 
     def __init__(self, config_path, map_path=""):
         self.config_file = config_handlers.get_conffile(config_path,
@@ -28,7 +31,7 @@ class OnionRouter(object):
         config_handlers.ConfigIntegrityChecker(
             ref_config=self.ref_config, other_config=self.config_file).verify()
         self.config = config_handlers.config_reader(self.config_file)
-        self.rerouters = self.rerouters(
+        self.rerouters = Rerouters(
             lazy=routers.LazyPostfixRerouter(self.config, self.mappings_path),
             onion=routers.OnionPostfixRerouter(
                 self.config, OnionServiceLookup(self.config)))
@@ -110,6 +113,10 @@ class OnionRouterRunner(object):
                 print(onion_router.run(addr))
 
     @staticmethod
+    def silent_callback(question, answer):
+        return question, answer
+
+    @staticmethod
     def reroute_debugger(question, answer):
         print("[Q]: {q}\n"
               "[A]: {a}".format(q=question, a=answer))
@@ -138,7 +145,7 @@ class OnionRouterRunner(object):
         else:
             resolver = self.craft_resolver(self.reroute_debugger
                                            if args.debug
-                                           else lambda *args: args)
+                                           else self.silent_callback)
             msockets.daemonize_server(onion_router, args.host, args.port,
                                       resolver=resolver)
 
